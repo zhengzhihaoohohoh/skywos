@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+    <title>CITTA YOGA</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            /*background-color: black;*/
+        }
+        .head{
+            height: 300px;
+            background: url("./images/bg.png");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative;
+            display: -webkit-box; 
+            -webkit-box-pack:center;
+            -webkit-box-align:center;
+        }
+        .head .bg{
+            height: 100%;
+            display: block;
+        }
+        .head .logo{
+            width: 180px;
+            display: block;
+            margin: 0 auto;
+            -webkit-transform: translateY(-230px) scale(0.5,0.5);
+        }
+        .head .translogo{
+            /*帧动画*/
+            -webkit-animation-name: logo-trans;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-timing-function:linear;
+            -webkit-animation-iteration-count:1;
+            -webkit-animation-fill-mode:forwards;
+        }
+        
+        @-webkit-keyframes logo-trans{
+            10%{
+                -webkit-transform: translateY(0px) rotate(-30deg);
+            }
+            20%{
+                -webkit-transform: translateY(-180px) rotate(-27deg);
+            }
+            30%{
+                -webkit-transform: translateY(0px) rotate(-24deg);
+            }
+            40%{
+                -webkit-transform: translateY(-130px) rotate(-21deg);
+            }
+            50%{
+                -webkit-transform: translateY(0px) rotate(-18deg);
+            }
+            60%{
+                 -webkit-transform: translateY(-80px) rotate(-15deg);
+            }
+            70%{
+                 -webkit-transform: translateY(-0px) rotate(-12deg);
+            }
+            80%{
+                 -webkit-transform: translateY(-50px) rotate(-9deg);
+            }
+            90%{
+                 -webkit-transform: translateY(-20px) rotate(-6deg);
+            }
+            95%{
+                 -webkit-transform: translateY(10px) rotate(-3deg);
+            }
+            100%{
+                -webkit-transform: translateY(0px) rotate(0deg);
+            }
+        }
+        .title{
+            /*margin-top: 20px;*/
+            line-height: 30px;
+            text-align: center;
+            opacity: 0;
+            height: 60px;
+            margin: 0 auto;
+            padding-top: 20px;
+            -webkit-animation-name: title-fade;
+            -webkit-animation-duration: 1.5s;
+            -webkit-animation-timing-function:ease-out;
+            -webkit-animation-iteration-count:1;
+            -webkit-animation-fill-mode:forwards;
+        }
+        .title img{
+            height: 100%;
+        }
+        .title span{
+            background: #FDC202;
+            border-radius: 5em;
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+            color: white;
+            opacity: 0;
+            -webkit-animation-name: title-fade;
+            -webkit-animation-duration: 1.5s;
+            -webkit-animation-timing-function:ease-out;
+            -webkit-animation-iteration-count:1;
+            -webkit-animation-fill-mode:forwards;
+        }
+        @-webkit-keyframes title-fade{
+            25%{
+                opacity: 0;
+            }
+            50%{
+                opacity: 0.25;
+            }
+            75%{
+                opacity: 0.5
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        .menu{
+            /*width: 100%;*/
+            height: 200px;
+            text-align: center;
+            position: relative;
+            transform: translateY(75px);
+            -webkit-transform:translateY(40px) translateX(-50%);
+        }
+        .menu .circle{
+            display: inline-block;
+            margin: 0;
+            box-sizing:border-box;
+            padding-top: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            opacity: 0;
+            position: absolute;
+            right: -40px;
+        }
+        .menu span{
+            color: white;
+            font-family: '微软雅黑';
+        }
+        .menu span.ch{
+            font-size: 14px;
+        }
+        .menu span.en{
+            font-size: 13px;
+        }
+        .c1{
+            background-color: #F5AE84;
+            z-index: 1;
+        }
+        .c2{
+            background-color: #66BAD6;
+            z-index: 2;
+        }
+        .c3{
+            background-color: #EB4DA2;
+            z-index: 3;
+        }
+        .c4{
+            background-color: #FCCF36;
+            z-index: 4;
+        }
+        .c5{
+            background-color: #E5202A;
+            z-index: 5;
+        }
+        .footer{
+            position: fixed;
+            bottom: 0;
+            background-color: #192324;
+            height: 40px;
+            width: 100%;
+            display: box;
+            display: -webkit-box;
+            color: white;
+            font-family: '微软雅黑';
+        }
+        .footer .left{
+            width: 60%;
+        }
+        .footer .left img.home{
+            position: absolute;
+            width: 50px;
+            top: -25px;
+            left: 15%;
+        }
+        .footer .right{
+            width: 40%;
+            border-left: 1px solid white;
+            display: -webkit-box;
+            -webkit-box-pack:center;
+            -webkit-box-align:center; 
+        }
+        .footer .right img.contact{
+            position: absolute;
+            width: 25px;
+            top: 7px;
+            left: 62%;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <img src="./images/logo.png" alt="" class="logo translogo">
+    </div>
+    <div class="title">
+        <!-- <span>CITTA YOGA</span> -->
+        <img src="./images/yoga.png" alt="" />
+    </div>
+    <div class="menu">
+        <span class="circle c1">
+            <span class='ch'>新闻公告</span>
+            <span class='en'>NEWS</span>
+        </span>
+        <span class="circle c2">
+            <span class='ch'>会员</span>
+            <span class='en'>MEMBER</span>
+        </span>
+        <span class="circle c3">
+            <span class='ch'>企业简介</span>
+            <span class='en'>BUSINESS</span>
+        </span>
+        <span class="circle c4">
+            <span class='ch'>课程</span>
+            <span class='en'>CLASSSS</span>
+        </span>
+        <span class="circle c5">
+            <span class='ch'>活动</span>
+            <span class='en'>ACTIVITY</span>
+        </span>
+    </div>
+    <div class="footer">
+        <div class="left">
+            <img src="./images/home.png" alt="" class="home" />
+        </div>
+        <div class="right">
+            <img src="./images/contact.png" alt="" class="contact" />
+            <span>联系我们</span>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var gallery = new TimelineMax({
+        repeat:0
+    })
+
+
+    var w = screen.availWidth;
+    if(w>320){
+
+        gallery.staggerTo($(".c1"), 0.2, {opacity:0.9}, 0.5)
+               .staggerTo($(".c2"), 0.2, {opacity:0.9}, 0.5)
+               .staggerTo($(".c4"), 0.2, {opacity:0.9}, 0.5)
+               .staggerTo($(".c5"), 0.2, {opacity:0.9}, 0.5)
+               .set($(".c3"), {'z-index':10})
+               .staggerTo($(".c3"), 0.2, {opacity:0.9}, 0.5)
+
+        gallery.to($('.c1'), 0.9222,{x:-140,ease: Back.easeInOut.config(4)},1)
+               .to($('.c5'), 0.9222,{x:140,ease: Back.easeInOut.config(4)},1)
+               .to($('.c2'), 0.9222,{x:-70,ease: Back.easeInOut.config(4)},1)
+               .to($('.c4'), 0.9222,{x:70,ease: Back.easeInOut.config(4)},1)
+               .set($(".c3"), {'z-index':3})
+    }else{
+
+        $('.home').css('top',-20);
+
+        gallery.set($('.menu'),{y:0})
+               .staggerTo($(".c1"), 0.2, {opacity:0.9}, 0.5)
+               .staggerTo($(".c2"), 0.2, {opacity:0.9}, 0.5)
+               .staggerTo($(".c4"), 0.2, {opacity:0.9}, 0.5)
+               .staggerTo($(".c5"), 0.2, {opacity:0.9}, 0.5)
+               .set($(".c3"), {'z-index':10})
+               .staggerTo($(".c3"), 0.2, {opacity:0.9}, 0.5)
+
+        gallery.to($('.c1'), 0.9222,{x:-120,ease: Back.easeInOut.config(4)},1)
+               .to($('.c5'), 0.9222,{x:120,ease: Back.easeInOut.config(4)},1)
+               .to($('.c2'), 0.9222,{x:-60,ease: Back.easeInOut.config(4)},1)
+               .to($('.c4'), 0.9222,{x:60,ease: Back.easeInOut.config(4)},1)
+               .set($(".c3"), {'z-index':3})
+    }
+
+
+</script>
+</html>
